@@ -1,11 +1,11 @@
 <?php
 
-$multiplicacion = $_GET['multiplicacion'];
-$division = $_GET['division'];
-$suma = $_GET['suma'];
-$resta = $_GET['resta'];
-$num1 = $_GET['numero1'];
-$num2 = $_GET['numero2'];
+//$multiplicacion = $_GET['multiplicacion'];
+//$division = $_GET['division'];
+//$suma = $_GET['suma'];
+//$resta = $_GET['resta'];
+$num1 = $_POST['numero1'];
+$num2 = $_POST['numero2'];
 
 function suma($a, $b){
     return $a + $b;
@@ -24,20 +24,31 @@ function division($a, $b){
 }
 
 
-if ($suma != "") {
-    echo suma($num1, $num2);
-}
 
-if ($resta != "") {
-    echo resta($num1, $num2);
-}
+foreach ($_POST as $key => $value) {
+    
+    switch ($key) {
+        case 'suma':
+            echo suma($num1, $num2);
+            break;
+        
+        case 'resta':
+            echo resta($num1, $num2);
+            break;
 
-if ($multiplicacion != "") {
-    echo multiplicacion($num1, $num2);
-}
+        case 'multiplicacion':
+            echo multiplicacion($num1, $num2);
+            break;
 
-if ($division != "") {
-    echo division($num1, $num2);
+        case 'division':
+            echo division($num1, $num2);
+            break;
+        
+        default:
+            
+            break;
+    }
+
 }
 
 
